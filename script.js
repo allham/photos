@@ -14,6 +14,7 @@ prevDom.onclick = function(){
     showSlider('prev');
 }
 let timeRunning = 3000;
+let rimeAutoNext = 7000;
 let runTimeOut;
 let runAutoRun;
 function showSlider(type){
@@ -30,8 +31,8 @@ function showSlider(type){
         carouselDom.classList.add('prev');
     }
     clearTimeout(runTimeOut);
-    runTimeOut = setTimeOut(() => {
+    runTimeOut = setTimeout(() => {
         carouselDom.classList.remove('next');
-        carouselDom.classList.remove('next');
+        carouselDom.classList.remove('prev');
     }, timeRunning)
 }
