@@ -68,10 +68,10 @@ header a {
     color: #f1683a;
 }
 .carousel .list .item .content .buttons {
-    display:grid;
+    display: grid;
     grid-template-columns: repeat(2, 130px);
     grid-template-rows: 40px;
-    gap: 5px;
+    gap: 10px;
     margin-top: 20px;
 }
 .carousel .list .item .content button {
@@ -94,7 +94,7 @@ header a {
     width: max-content;
     z-index: 100;
     display: flex;
-    gap: 20px;
+    gap: 10px;
 }
 .thumbnail .item {
     width: 150px;
@@ -139,6 +139,7 @@ header a {
     font-weight: bold;
     font-size: large;
     transition: .5s;
+    z-index: 100;
 }
 .arrows button:hover {
     background-color: #eee;
@@ -147,12 +148,12 @@ header a {
 .carousel .list .item:nth-child(1) {
     z-index: 1;
 }
-.carousel .list  .item:nth-child(1) .author,
+.carousel .list .item:nth-child(1) .author,
 .carousel .list .item:nth-child(1) .title,
 .carousel .list .item:nth-child(1) .topic,
 .carousel .list .item:nth-child(1) .des,
 .carousel .list .item:nth-child(1) .buttons {
-    transform: translateY(50%);
+    transform: translateY(50px);
     filter: blur(20px);
     opacity: 0;
     animation: showContent 0.5s 1s linear 1 forwards;
@@ -163,6 +164,9 @@ header a {
         filter: blur(0);
         transform:translateY(0);
     }
+}
+.carousel .list .item:nth-child(1) .author {
+    animation-delay: .9s;
 }
 .carousel .list .item:nth-child(1) .title {
     animation-delay: 1.2s;
@@ -198,7 +202,7 @@ header a {
 .carousel.next .thumbnail .item:nth-last-child(1) {
     width: 0;
     overflow: hidden;
-    animation: showThumbnail .5 linear 1 forwards;
+    animation: showThumbnail .5s linear 1 forwards;
 }
 @keyframes showThumbnail {
     to {
@@ -207,4 +211,29 @@ header a {
 }
 .carousel.next .thumbnail {
     transform: translateX(150px);
+    animation: transformThumbnail .5s linear 1 forwards; 
+}
+@keyframes transformThumbnail {
+    to {
+        transform: translateX(0);
+    }
+}
+/* effect prev click */
+.carousel.prev .list .item:nth-child(2) {
+    z-index: 2;
+}
+.carousel.prev .list .item:nth-child(2) img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: outImage 0.5s linear 1 forwards;
+}
+@keyframes outImage {
+    to {
+        width: 150px;
+        height: 220px;
+        border-radius: 20px;
+        left: 50%;
+        bottom: 50px;
+    }
 }
